@@ -1,3 +1,4 @@
+
 from djongo import models
 
 class Team(models.Model):
@@ -9,12 +10,12 @@ class Team(models.Model):
 class User(models.Model):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=100)
-    team = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='members')
+    team_id = models.CharField(max_length=24, blank=True, null=True)  # Referencia por id
     class Meta:
         db_table = 'users'
 
 class Activity(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='activities')
+    user_id = models.CharField(max_length=24, blank=True, null=True)  # Referencia por id
     type = models.CharField(max_length=50)
     duration = models.IntegerField()
     date = models.DateField()
@@ -24,12 +25,12 @@ class Activity(models.Model):
 class Workout(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
-    suggested_for = models.ManyToManyField(User, related_name='suggested_workouts')
+    suggested_for_ids = models.JSONField(default=list)  # Lista de ids de usuarios
     class Meta:
         db_table = 'workouts'
 
 class Leaderboard(models.Model):
-    team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='leaderboard')
+    team_id = models.CharField(max_length=24, blank=True, null=True)  # Referencia por id
     points = models.IntegerField()
     class Meta:
         db_table = 'leaderboard'
