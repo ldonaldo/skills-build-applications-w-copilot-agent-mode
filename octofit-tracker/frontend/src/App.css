@@ -1,0 +1,39 @@
+
+body {
+  background-color: #f8f9fa;
+}
+
+.navbar {
+  margin-bottom: 2rem;
+}
+
+.container {
+  margin-top: 2rem;
+}
+
+.table {
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.card {
+  margin-bottom: 1.5rem;
+}
+
+.modal-content {
+  border-radius: 1rem;
+}
+
+.btn-primary, .btn-secondary, .btn-success, .btn-danger {
+  margin-right: 0.5rem;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+}
